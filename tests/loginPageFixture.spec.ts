@@ -14,7 +14,7 @@ test.beforeEach(async ({ loginPage }) => {
 });
 
 
-test('login page', async ({ loginPage }) => {
+test('login page test', async ({ loginPage }) => {
 
     meta({ priority: 'P2', severity: 'low', owner: 'Chandan', story: 'Jira#01', epic: 'e300', feature: 'F30', issue: 'Bug 1' });
     let pageTile = await loginPage.getPageTitle();
