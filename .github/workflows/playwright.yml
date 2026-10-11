@@ -53,8 +53,6 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit == 'true'
         run: npx playwright install-deps chromium
 
-      # reportingLabs run history: powers the Trend chart, new vs known
-      # failures, flaky dots and "got slower". One history per environment.
       - name: Restore reportingLabs history
         uses: actions/cache@v4
         with:
@@ -66,9 +64,9 @@ jobs:
         run: npx playwright test --project=chromium
         env:
           ENV: ${{ github.event.inputs.environment || 'QA' }}
-          BASE_URL: ${{ secrets.BASE_URL }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PASSWORD: ${{ secrets.PASSWORD }}
+          APP_URL: ${{ secrets.APP_URL }}
+          APP_USERNAME: ${{ secrets.APP_USERNAME }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
           API_BASE_URL: ${{ secrets.API_BASE_URL }}
           API_TOKEN: ${{ secrets.API_TOKEN }}
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
